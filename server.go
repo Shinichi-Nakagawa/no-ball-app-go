@@ -19,7 +19,7 @@ type Teams struct {
     W int64 `form:"W"`
     L int64 `form:"L"`
     R int64 `form:"R"`
-    ER int64 `form:"ER"`
+    RA int64 `form:"RA"`
     G int64 `form:G`
     DivID string `form:"divID"`
     Rank string `form:"Rank"`
@@ -64,10 +64,10 @@ func main() {
         Charset: "utf-8",
         Funcs: []template.FuncMap{
             {
-                "calcPythagorasWin": func(r, er, g int64) int64 {
+                "calcPythagorasWin": func(r, ra, g int64) int64 {
                     r2 := math.Pow(float64(r), 2)
-                    er2 := math.Pow(float64(er), 2)
-                    pythagorasPercent := r2 / (r2 + er2)
+                    ra2 := math.Pow(float64(ra), 2)
+                    pythagorasPercent := r2 / (r2 + ra2)
                     return int64(float64(g) * pythagorasPercent)
                 },
             },
@@ -89,7 +89,7 @@ func main() {
         var teams []Teams
         _, err := dbmap.Select(
             &teams,
-            "select yearID, lgID, W, L, name, Rank, divID, teamID, R, ER, G from Teams where yearid = :year and lgid = :league ", 
+            "select yearID, lgID, W, L, name, Rank, divID, teamID, R, RA, G from Teams where yearid = :year and lgid = :league ", 
             map[string]interface{}{
                 "year": searchForm.Year,
                 "league": searchForm.League,

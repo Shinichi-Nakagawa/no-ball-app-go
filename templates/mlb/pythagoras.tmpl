@@ -75,7 +75,7 @@ $(function () {
             	{{range .Teams}}
                 	{
                         "x": {{ .W }},
-                        "y": {{ calcPythagorasWin .R .ER .G }},
+                        "y": {{ calcPythagorasWin .R .RA .G }},
                         "name": '{{ .Name }}({{ .DivID }}, {{ .Rank }})',
                         "team": '{{ .TeamID }}'
                     },
