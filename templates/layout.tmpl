@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>No Ball - PyCon JP 2014</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/sb-admin.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </head>
+  <body>
+  	<div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">No Ball</a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <li>
+                <a href="/"><i class="fa fa-dashboard"></i>Top</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div id="page-wrapper">
+        <h1>ピタゴラス勝率検索(MLB)</h1>
+        <div class="row">
+          <form role="search" method="get" action="/pythagoras_search/">
+            <div class="form-group input-group">
+              <select name="year" class="form-control" >
+                {{range .Form.Years}}
+                <option value='{{.}}'>{{.}}</option>
+                {{end}}
+              </select>
+              <select name="league" class="form-control" >
+                {{range .Form.League}}
+                <option value='{{.}}'>{{.}}</option>
+                {{end}}
+              </select>
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+        </div>
+        {{ yield }}
+      </div>
+  	</div>
+  </body>
+
+</html>
